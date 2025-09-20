@@ -6,7 +6,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { overlay } from "overlay-kit";
 import type { ReactNode } from "react";
 
 interface ModalOptions {
