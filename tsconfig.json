@@ -4,9 +4,15 @@
     "jsx": "react-jsx",
     "module": "preserve",
     "moduleResolution": "bundler",
+    "target": "ES2015",
+    "lib": ["ES2015", "DOM", "DOM.Iterable"],
     "noEmit": true,
     "skipLibCheck": true,
     "strict": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
