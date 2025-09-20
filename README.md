@@ -50,3 +50,28 @@ UI 라이브러리나 다른 유틸리티 라이브러리 등 추가 기술 스�
 ---
 
 2시간
+
+---
+
+## 추가 노트
+
+### 사용한 라이브러리
+
+- 모달을 처음부터 직접 구현할수도 있지만 실무에서 사용한다고 가정했을 때 검증된 라이브러리를 사용하는게 더 좋다고 판단했습니다.
+- overlay-kit: 모달을 선언적으로 호출하기 위해서 사용됩니다.
+- shadcn/dialog: radix ui로 기능을 tailwind로 기본적인 스타일을 적용한 코드를 생성합니다.
+
+### 구현 요구사항
+
+- 모달 닫기
+  - radix ui에서 esc, overlay 클릭 시 모달이 닫히는 기능을 지원함. 그리고 overlay-kit와 radix ui를 연결하는 코드만 작성함
+    - `<Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>`
+- TODO
+
+### ai
+
+- UI는 모두 claude code를 사용해서 작업했습니다.
+
+### TODO
+
+- TODO: OpenModalButton같은 컴포넌트를 만들면 ref를 전달하지 않고도 포커스를 복귀할 수 있음. 고려해보기
