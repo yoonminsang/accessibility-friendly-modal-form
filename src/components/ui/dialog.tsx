@@ -4,16 +4,33 @@ import { XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * NOTE: shadcn/dialog로 생성된 코드입니다. 스타일 수정이 필요하다면 이 파일을 수정해주세요.
+ * 
+ * overlay-kit와 연결해서 사용하기 때문에 DialogTrigger는 사용하지 않습니다.
+ * 
+ * 단, DialogClose는 사용할 수 있습니다.(아래 기능을 연결해서 사용하는 경우에)
+  ```ts
+  <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+    <DialogContent>
+      <DialogPrimitive.Close> // ← 이게 자동으로 onOpenChange 트리거
+        X 버튼
+      </DialogPrimitive.Close>
+    </DialogContent>
+  </Dialog>
+  ```
+ * 작동 흐름:
+ * 1. DialogPrimitive.Close 클릭
+ * 2. Radix가 onOpenChange(false) 호출
+ * 3. 우리 핸들러 (open) => !open && onClose() 실행
+ * 4. overlay-kit의 close() 호출
+ * 
+ * base가 되는 코드이기 때문에 이를 이용한 컴포넌트를 만들고 추상화해서 사용해주세요
+ */
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
-}
-
-function DialogTrigger({
-  ...props
-}: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
-  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
 function DialogPortal({
@@ -137,5 +154,4 @@ export {
   DialogOverlay,
   DialogPortal,
   DialogTitle,
-  DialogTrigger,
 };
